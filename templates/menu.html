@@ -1,0 +1,20 @@
+<h1>Menu</h1>
+<div class="row">
+  {% for menu_item in menu_items %}
+    <div class="col-4">
+      <div class="card">
+        <img src="{{ menu_item.image.url }}" class="card-img-top" alt="{{ menu_item.name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ menu_item.name }}</h5>
+          <p class="card-text">{{ menu_item.description }}</p>
+          <p class="card-text">Price: {{ menu_item.price }}</p>
+          <p class="card-text">Options:
+            {% for option in menu_item.options.all %}
+              {{ option.name }} - {{ option.price }}<br>
+            {% endfor %}
+          </p>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
